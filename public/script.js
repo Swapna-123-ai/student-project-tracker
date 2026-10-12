@@ -1,52 +1,57 @@
 const form = document.getElementById("project-form");
-const projectName = document.getElementById("project-name");
-const projectStatus = document.getElementById("project-status");
+const nameInput = document.getElementById("name");
+const statusInput = document.getElementById("status");
 const projectList = document.getElementById("project-list");
+const emptyState = document.getElementById("empty-state");
 
-// Load saved projects from the browser
-let projects = JSON.parse(
-  localStorage.getItem("studentProjects") || "[]"
-);
-
-function saveProjects() {
-  localStorage.setItem("studentProjects", JSON.stringify(projects));
-}
+// Projects exist only while this page is open.
+const projects = [];
 
 function renderProjects() {
-  projectList.innerHTML = "";
-
-  if (projects.length === 0) {
-    projectList.textContent = "No projects added yet.";
-    return;
-  }
+  projectList.replaceChildren();
 
   projects.forEach(function (project) {
-    const card = document.createElement("div");
+    const item = document.createElement("li");
+
     const title = document.createElement("h3");
-    const statusText = document.createElement("p");
-
     title.textContent = project.name;
-    statusText.textContent = "Status: " + project.status;
 
-    card.appendChild(title);
-    card.appendChild(statusText);
-    projectList.appendChild(card);
+    const status = document.createElement("p");
+    status.textContent = "Status: " + project.status;
+
+    item.appendChild(title);
+    item.appendChild(status);
+    projectList.appendChild(item);
   });
+
+  if (emptyState) {
+    emptyState.hidden = projects.length > 0;
+  }
 }
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const name = projectName.value.trim();
-  const status = projectStatus.value;
+  const projectName = nameInput.value.trim();
+  const projectStatus = statusInput.value;
 
-  if (!name) return;
+  if (!projectName) {
+    nameInput.focus();
+    return;
+  }
 
-  projects.push({ name, status });
-  saveProjects();
+  const project = {
+    id: crypto.randomUUID(),
+    name: projectName,
+    status: projectStatus
+  };
+
+  projects.push(project);
   renderProjects();
-  form.reset();
+
+  nameInput.value = "";
+  statusInput.value = "Planned";
+  nameInput.focus();
 });
 
-// Display saved projects when the page opens
 renderProjects();

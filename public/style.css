@@ -1,1 +1,76 @@
+* {
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  color: #243047;
+}
+
+header {
+  background: #2347c5;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 10px;
+}
+
+header p {
+  margin: 0;
+}
+
+main {
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.summary,
+.project-section {
+  background: white;
+  padding: 24px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px #0000000d;
+}
+
+form {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+input,
+select,
+button {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+}
+
+input,
+select {
+  border: 1px solid #ccd3e0;
+}
+
+button {
+  background: #2347c5;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #18369e;
+}
+/* Improve the dashboard background */
+body {
+  background-color: #f1f5f9;
+  color: #1e293b;
+  font-family: Arial, sans-serif;
+}

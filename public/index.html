@@ -1,5 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Workshop readiness</title></head>
-<body><main><h1>Student Project Tracker</h1><p>Readiness check passed. We will build the interface in Session 1.</p></main></body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Project Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+<<link rel="stylesheet" href="style.css">>
+<body>
+  <header>
+    <h1>Student Project Tracker</h1>
+    <p>Organize your projects and track your progress.</p>
+  </header>
+
+  <main>
+    <section class="summary">
+      <h2>My Dashboard</h2>
+      <p>Welcome! Let's manage your projects.</p>
+    </section>
+
+    <section class="project-section">
+      <h2>My Projects</h2>
+
+      <form id="project-form">
+        <label for="project-name">Project name</label>
+        <input
+          type="text"
+          id="project-name"
+          placeholder="Enter your project name"
+          required
+        >
+
+        <label for="project-status">Project status</label>
+        <select id="project-status">
+          <option value="Not Started">Not Started</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+
+        <button type="submit">Add Project</button>
+      </form>
+
+      <div id="project-list">
+        <p>No projects added yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
 </html>
